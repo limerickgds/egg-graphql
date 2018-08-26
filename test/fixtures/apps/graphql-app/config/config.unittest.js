@@ -1,9 +1,8 @@
 'use strict';
 
 exports.keys = 'plugin-graphql';
-exports.middleware = [ 'graphql' ];
 exports.graphql = {
-  graphiql: true,
+  gui: true,
   async onPreGraphiQL(ctx) {
     await ctx.service.user.getUserList();
     return {};

@@ -1,7 +1,6 @@
 'use strict';
 
-const { execute, formatError } = require('graphql');
-const gql = require('graphql-tag');
+const { runQuery } = require('apollo-server-core');
 
 module.exports = app => {
   class GraphqlService extends app.Service {
@@ -13,27 +12,18 @@ module.exports = app => {
       try {
         const params = JSON.parse(requestString);
         const { query, variables, operationName } = params;
-        // GraphQL source.
-        // https://github.com/apollostack/graphql-tag#caching-parse-results
-        const documentAST = gql`${query}`;
         const context = ctx;
         const schema = this.app.schema;
 
-        // http://graphql.org/graphql-js/execution/#execute
-        result = await execute(
+        // https://github.com/apollographql/apollo-server/blob/master/packages/apollo-server-core/src/runQuery.ts#L78
+        result = await runQuery({
           schema,
-          documentAST,
-          null,
+          queryString: query,
           context,
           variables,
-          operationName
-        );
+          operationName,
+        });
 
-        // Format any encountered errors.
-        /* istanbul ignore if */
-        if (result && result.errors) {
-          result.errors = result.errors.map(formatError);
-        }
       } catch (e) {
         this.logger.error(e);
 

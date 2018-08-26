@@ -3,7 +3,7 @@
 const assert = require('assert');
 const mm = require('egg-mock');
 
-describe('test/plugin.test.js', () => {
+describe('test/service/graphql.test.js', () => {
   let app;
 
   before(() => {
@@ -18,7 +18,7 @@ describe('test/plugin.test.js', () => {
   it('should return empty array', async () => {
     const ctx = app.mockContext();
     const query = JSON.stringify({
-      query: '{ projects }',
+      query: '{ projects { name } }',
     });
     const resp = await ctx.graphql.query(query);
     assert.deepEqual(resp.data.projects, []);
@@ -27,7 +27,7 @@ describe('test/plugin.test.js', () => {
   it('should return user with no projects', async () => {
     const ctx = app.mockContext();
     const query = JSON.stringify({
-      query: '{ user(id: 3) { projects } }',
+      query: '{ user(id: 3) { projects { name } } }',
     });
     const resp = await ctx.graphql.query(query);
     assert.deepEqual(resp.data, { user: { projects: [] } });

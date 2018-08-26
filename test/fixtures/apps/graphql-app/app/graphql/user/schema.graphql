@@ -1,6 +1,6 @@
 type Query {
   user(id: Int): User
-  projects: [Project!]
+  projects: [Project]!
 }
 
 type User {
@@ -8,5 +8,5 @@ type User {
   password: String!
   name: String!
   upperName: String @upper
-  projects: [Project!]
+  projects: [Project]!
 }

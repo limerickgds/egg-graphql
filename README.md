@@ -1,5 +1,24 @@
 # egg-graphql
 ---
+[![NPM version][npm-image]][npm-url]
+[![build status][travis-image]][travis-url]
+[![Test coverage][codecov-image]][codecov-url]
+[![David deps][david-image]][david-url]
+[![Known Vulnerabilities][snyk-image]][snyk-url]
+[![npm download][download-image]][download-url]
+
+[npm-image]: https://img.shields.io/npm/v/egg-graphql.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/egg-graphql
+[travis-image]: https://img.shields.io/travis/eggjs/egg-graphql.svg?style=flat-square
+[travis-url]: https://travis-ci.org/eggjs/egg-graphql
+[codecov-image]: https://img.shields.io/codecov/c/github/eggjs/egg-graphql.svg?style=flat-square
+[codecov-url]: https://codecov.io/github/eggjs/egg-graphql?branch=master
+[david-image]: https://img.shields.io/david/eggjs/egg-graphql.svg?style=flat-square
+[david-url]: https://david-dm.org/eggjs/egg-graphql
+[snyk-image]: https://snyk.io/test/npm/egg-graphql/badge.svg?style=flat-square
+[snyk-url]: https://snyk.io/test/npm/egg-graphql
+[download-image]: https://img.shields.io/npm/dm/egg-graphql.svg?style=flat-square
+[download-url]: https://npmjs.org/package/egg-graphql
 
 [GraphQL](http://facebook.github.io/graphql/)使用 Schema 来描述数据，并通过制定和实现 GraphQL 规范定义了支持 Schema 查询的 DSQL （Domain Specific Query Language，领域特定查询语言，由 FACEBOOK 提出。
 
@@ -62,9 +81,9 @@ exports.graphql = {
   // 是否加载开发者工具 graphiql, 默认开启。路由同 router 字段。使用浏览器打开该可见。
   graphiql: true,
   // graphQL 路由前的拦截器
-  onPreGraphQL: function* (ctx) {},
+  onPreGraphQL: function* (ctx) {},  // TODO
   // 开发工具 graphiQL 路由前的拦截器，建议用于做权限操作(如只提供开发者使用)
-  onPreGraphiQL: function* (ctx) {},
+  onPreGraphiQL: function* (ctx) {}, // TODO
 };
 ```
 

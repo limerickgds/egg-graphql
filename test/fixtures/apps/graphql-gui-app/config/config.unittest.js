@@ -1,10 +1,9 @@
 'use strict';
 
 exports.keys = 'plugin-graphql';
-exports.middleware = [ 'graphql' ];
 exports.graphql = {
   router: '/graphql',
-  graphiql: false,
+  gui: false,
   async onPreGraphQL(ctx) {
     await ctx.service.user.getUserList();
     return {};
